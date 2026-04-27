@@ -10,7 +10,7 @@ export default function App() {
     [1, 1],
     [3, 4],
     [1, 2],
-    [2, 2],
+    [2, 2]
   ];
 
   function sortasc() {
@@ -22,7 +22,14 @@ export default function App() {
     setContent(newarray);
   }
   function removeduplicate() {
-    const newarray = content.filter((e: [number, number]) => e[0] !== e[1]);
+    const newarray = content.filter((e: [number, number], index: number) => {
+      let total = e[0] + e[1];
+      const found = content.find(
+        (v: [number, number], i: number) => v[0] + v[1] == total && i !== index,
+      );
+      console.log(found)
+      return !found
+    });
     setContent(newarray);
   }
   function flipcard() {
@@ -52,7 +59,7 @@ export default function App() {
   return (
     <div className="w-screen h-screen border flex  justify-center items-center ">
       <div className="flex flex-col gap-2">
-        <div className="flex gap-2">
+        <div className="flex gap-2 justify-center">
           {" "}
           {content.map((e: [number, number], id: number) => (
             <Domino key={id} number1={e[0]} number2={e[1]} />

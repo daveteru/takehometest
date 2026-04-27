@@ -12,6 +12,7 @@ export default function Domino({number1 , number2}:dominoprop) {
       <span>{number1 ?? 0}</span>
       <hr></hr>
       <span>{number2 ?? 0}</span>
+      {/* {total} */}
     </div>
   );
 }
