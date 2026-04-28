@@ -2,8 +2,7 @@ import { useMemo, useState } from "react";
 import Domino from "./Domino";
 
 export default function App() {
-
-  type dominonumber = 1|2|3|4|5|6;
+  type dominonumber = 1 | 2 | 3 | 4 | 5 | 6;
   const source = [
     [6, 1],
     [4, 3],
@@ -29,8 +28,8 @@ export default function App() {
       const found = content.find(
         (v: [number, number], i: number) => v[0] + v[1] == total && i !== index,
       );
-      console.log(found)
-      return !found
+      console.log(found);
+      return !found;
     });
     setContent(newarray);
   }
@@ -104,6 +103,9 @@ export default function App() {
             ></input>
             <button
               onClick={() => removenumber(rmvnumber)}
+              onKeyDown={(e) => {
+                if (e.key === "enter") removenumber(rmvnumber);
+              }}
               className="bg-blue-700 flex-1  rounded-md text-white p-3 cursor-pointer hover:bg-blue-500"
             >
               <span>Remove Number</span>
