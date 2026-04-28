@@ -98,14 +98,14 @@ export default function App() {
             <input
               value={rmvnumber}
               onChange={(e) => setRmvnumber(Number(e.target.value))}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") removenumber(rmvnumber);
+              }}
               type="number"
               className="border w-[60%] rounded-lg flex px-auto text-center"
             ></input>
             <button
               onClick={() => removenumber(rmvnumber)}
-              onKeyDown={(e) => {
-                if (e.key === "enter") removenumber(rmvnumber);
-              }}
               className="bg-blue-700 flex-1  rounded-md text-white p-3 cursor-pointer hover:bg-blue-500"
             >
               <span>Remove Number</span>
