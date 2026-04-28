@@ -2,6 +2,8 @@ import { useMemo, useState } from "react";
 import Domino from "./Domino";
 
 export default function App() {
+
+  type dominonumber = 1|2|3|4|5|6;
   const source = [
     [6, 1],
     [4, 3],
@@ -10,7 +12,7 @@ export default function App() {
     [1, 1],
     [3, 4],
     [1, 2],
-    [2, 2]
+    [2, 2],
   ];
 
   function sortasc() {
@@ -58,60 +60,62 @@ export default function App() {
   );
   return (
     <div className="w-screen h-screen border flex  justify-center items-center ">
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col  gap-2 items-center">
         <div className="flex gap-2 justify-center">
           {" "}
-          {content.map((e: [number, number], id: number) => (
+          {content.map((e: [dominonumber, dominonumber], id: number) => (
             <Domino key={id} number1={e[0]} number2={e[1]} />
           ))}
         </div>
-        <div className="border p-3 border-neutral-200 rounded-md flex justify-center bg-neutral-100">
-          Double Numbers : {double}
-        </div>
-        <button
-          onClick={sortasc}
-          className="bg-blue-700 rounded-md text-white p-3 cursor-pointer hover:bg-blue-500"
-        >
-          <span>Sort (ASC)</span>
-        </button>
-        <button
-          onClick={sortDesc}
-          className="bg-blue-700 rounded-md text-white p-3 cursor-pointer hover:bg-blue-500"
-        >
-          <span>Sort (DESC)</span>
-        </button>
-        <button
-          onClick={removeduplicate}
-          className="bg-blue-700 rounded-md text-white p-3 cursor-pointer hover:bg-blue-500"
-        >
-          <span>Remove Duplicate</span>
-        </button>
-        <button
-          onClick={flipcard}
-          className="bg-blue-700 rounded-md text-white p-3 cursor-pointer hover:bg-blue-500"
-        >
-          <span>FlipCard</span>
-        </button>
-        <div className="flex gap-2">
-          <input
-            value={rmvnumber}
-            onChange={(e) => setRmvnumber(Number(e.target.value))}
-            type="number"
-            className="border w-[60%] rounded-lg flex px-auto text-center"
-          ></input>
+        <div className="flex flex-col max-w-100 gap-1 ">
+          <div className="border p-3 border-neutral-200 rounded-md flex justify-center bg-neutral-100">
+            Double Numbers : {double}
+          </div>
           <button
-            onClick={() => removenumber(rmvnumber)}
-            className="bg-blue-700 flex-1  rounded-md text-white p-3 cursor-pointer hover:bg-blue-500"
+            onClick={sortasc}
+            className="bg-blue-700 rounded-md text-white p-3 cursor-pointer hover:bg-blue-500"
           >
-            <span>Remove Number</span>
+            <span>Sort (ASC)</span>
+          </button>
+          <button
+            onClick={sortDesc}
+            className="bg-blue-700 rounded-md text-white p-3 cursor-pointer hover:bg-blue-500"
+          >
+            <span>Sort (DESC)</span>
+          </button>
+          <button
+            onClick={removeduplicate}
+            className="bg-blue-700 rounded-md text-white p-3 cursor-pointer hover:bg-blue-500"
+          >
+            <span>Remove Duplicate</span>
+          </button>
+          <button
+            onClick={flipcard}
+            className="bg-blue-700 rounded-md text-white p-3 cursor-pointer hover:bg-blue-500"
+          >
+            <span>FlipCard</span>
+          </button>
+          <div className="flex gap-2">
+            <input
+              value={rmvnumber}
+              onChange={(e) => setRmvnumber(Number(e.target.value))}
+              type="number"
+              className="border w-[60%] rounded-lg flex px-auto text-center"
+            ></input>
+            <button
+              onClick={() => removenumber(rmvnumber)}
+              className="bg-blue-700 flex-1  rounded-md text-white p-3 cursor-pointer hover:bg-blue-500"
+            >
+              <span>Remove Number</span>
+            </button>
+          </div>
+          <button
+            onClick={reset}
+            className="bg-neutral-700 rounded-md text-white p-3 cursor-pointer hover:bg-blue-500"
+          >
+            <span>Reset</span>
           </button>
         </div>
-        <button
-          onClick={reset}
-          className="bg-blue-700 rounded-md text-white p-3 cursor-pointer hover:bg-blue-500"
-        >
-          <span>Reset</span>
-        </button>
       </div>
     </div>
   );
